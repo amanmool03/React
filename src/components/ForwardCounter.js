@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Card from './Card';
+import Card from "./Card";
 
 const ForwardCounter = () => {
   const [counter, setCounter] = useState(0);
