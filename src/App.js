@@ -1,5 +1,11 @@
+import SimpleInput from "./components/SimpleInput";
 import React from "react";
-
-export default function App() {
-  return <div>App</div>;
+function App() {
+  return (
+    <div className="app">
+      <SimpleInput />
+    </div>
+  );
 }
+
+export default App;
