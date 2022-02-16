@@ -1,0 +1,23 @@
+{
+  "name": "React-After-section14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "redux-demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amanmool03/React.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amanmool03/React/issues"
+  },
+  "homepage": "https://github.com/amanmool03/React#readme",
+  "dependencies": {
+    "redux": "^4.1.2"
+  }
+}
