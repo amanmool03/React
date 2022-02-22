@@ -1,35 +1,38 @@
 import React from "react";
 import {
   Route,
-  BrowserRouter as Router,
   Switch,
+  BrowserRouter as Router,
   Redirect,
 } from "react-router-dom";
-import MainHeader from "./components/MainHeader";
-import Products from "./pages/Products";
-import Welcome from "./pages/Welcome";
-import ProductDetails from "./pages/ProductDetails";
+import Layout from "./components/layout/Layout";
+import AllQuotes from "./pages/AllQuotes";
+import NewQuote from "./pages/NewQuote";
+import NotFound from "./pages/NotFound";
+import QuoteDetail from "./pages/QuoteDetail";
 
 function App() {
   return (
     <Router>
-      <MainHeader />
-      <main>
+      <Layout>
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/welcome" />
+            <Redirect to="/quotes" />
           </Route>
-          <Route path="/welcome">
-            <Welcome />
+          <Route path="/quotes" exact>
+            <AllQuotes />
           </Route>
-          <Route path="/products" exact>
-            <Products />
+          <Route path="/quotes/:quoteId">
+            <QuoteDetail />
           </Route>
-          <Route path="/products/:productId">
-            <ProductDetails />
+          <Route path="/new-quote">
+            <NewQuote />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
-      </main>
+      </Layout>
     </Router>
   );
 }
