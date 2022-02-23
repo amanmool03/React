@@ -1,39 +1,35 @@
-import React from "react";
-import {
-  Route,
-  Switch,
-  BrowserRouter as Router,
-  Redirect,
-} from "react-router-dom";
-import Layout from "./components/layout/Layout";
-import AllQuotes from "./pages/AllQuotes";
-import NewQuote from "./pages/NewQuote";
-import NotFound from "./pages/NotFound";
-import QuoteDetail from "./pages/QuoteDetail";
+import { Switch, Route, Redirect } from "react-router-dom";
+import React, { useContext } from "react";
+import Layout from "./components/Layout/Layout";
+import UserProfile from "./components/Profile/UserProfile";
+import AuthPage from "./pages/AuthPage";
+import HomePage from "./pages/HomePage";
+import AuthContext from "./store/auth-context";
 
 function App() {
+  const authCtx = useContext(AuthContext);
   return (
-    <Router>
-      <Layout>
-        <Switch>
-          <Route path="/" exact>
-            <Redirect to="/quotes" />
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        {!authCtx.isLoggedIn && (
+          <Route path="/auth">
+            <AuthPage />
           </Route>
-          <Route path="/quotes" exact>
-            <AllQuotes />
-          </Route>
-          <Route path="/quotes/:quoteId">
-            <QuoteDetail />
-          </Route>
-          <Route path="/new-quote">
-            <NewQuote />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
-      </Layout>
-    </Router>
+        )}
+
+        <Route path="/profile">
+          {authCtx.isLoggedIn && <UserProfile />}
+          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+        </Route>
+
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
