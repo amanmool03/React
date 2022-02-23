@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import AddUser from "./components/Users/AddUser";
-import UserList from "./components/Users/UserList";
+import React, { useContext } from "react";
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
+import MainHeader from "./components/MainHeader/MainHeader";
+import AuthContext from "./store/auth-context";
 
 function App() {
-  const [addUserList, setaddUserList] = useState([]);
-
-  const addUserHandler = (uname, uage) => {
-    setaddUserList((prev) => {
-      return [
-        ...prev,
-        { username: uname, age: uage, id: Math.random().toString() },
-      ];
-    });
-  };
-
+  const ctx = useContext(AuthContext);
   return (
-    <div>
-      <AddUser onAddUser={addUserHandler} />
-      <UserList users={addUserList} />
-    </div>
+    <React.Fragment>
+      <MainHeader />
+      <main>
+        {!ctx.isLoggedIn && <Login />}
+        {ctx.isLoggedIn && <Home />}
+      </main>
+    </React.Fragment>
   );
 }
 
