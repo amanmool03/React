@@ -94,7 +94,15 @@ const AuthForm = () => {
           {!isLoading && (
             <button>{isLogin ? "Login" : "Create Account"}</button>
           )}
-          {isLoading && <p>Sending request...</p>}
+          {isLoading && (
+            <button>
+              <img
+                src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif"
+                alt=""
+                style={{ height: "25px" }}
+              />
+            </button>
+          )}
           <button
             type="button"
             className={classes.toggle}
